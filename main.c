@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:33 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/10 18:22:01 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/18 00:58:50 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,38 +37,38 @@ t_stack	*init_list(void)
 	if (empstack)
 	{
 		empstack->val = 0;
-		empstack->prv = empstack;
-		empstack->nxt = empstack;
+		empstack->nxt = NULL;
 	}
 	return (empstack);
 }
 
 void	free_list(t_stack *lst)
 {
-	t_stack *current;
-	t_stack *next;
+	t_stack *tmp;
 
-	if (lst == NULL)
-		return;
-	current = lst->nxt;
-	next = current->nxt;
-	while (current != next)
+	while (lst != NULL)
 	{
-		//free (current);
-		current = next;
-		next = next->nxt;
+		tmp = lst->nxt;
+		//free (lst);
+		lst = tmp;
 	}
-	free (lst);
+	//free (lst);
 }
 
 int	is_sort(t_stack *lst)
 {
 	t_stack *sort;
 
+
 	sort = lst->nxt;
-	while (sort->val < sort->nxt->val)
+	printf("list val %i\n", lst->val);
+	printf("sort val %i\n", sort->val);
+	while (sort != NULL && sort->val < sort->nxt->val)
+	{
+		printf("aqacccccc%i\n", sort->val);
 		sort = sort->nxt;
-	if (sort->nxt == lst)
+	}
+	if (sort == NULL)
 		return (1);
 	return (0);
 }
@@ -77,13 +77,14 @@ int	main(int ac, char *av[])
 	t_stack *stack;
 
 	stack = init_list();
-
 	if (stack && fill_lst(stack, ac - 1, av + 1))
 	{
-		if (is_sort(stack) == 0)
+		if (is_sort(stack) == 1)
 		{
-			swap(stack);
+			check_list(stack);
+			erase_first(stack);
 			printf("\ntest\n");
+			check_list(stack);
 			return (0);
 			//do smthg begin work
 		}
@@ -94,6 +95,7 @@ int	main(int ac, char *av[])
 		//free_list (stack);
 		return (-1);
 	}
+	printf("bla\n");
 	free_list(stack);
 	return (0);
 }

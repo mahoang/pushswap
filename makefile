@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
+#    By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/10 13:13:50 by zephyrus          #+#    #+#              #
-#    Updated: 2021/09/10 18:09:31 by zephyrus         ###   ########.fr        #
+#    Updated: 2021/09/18 00:34:30 by mahoang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 HEADER = pushswap.h
-SRC = main.c parsing.c papb.c
+SRC = main.c parsing.c papb.c utils.c
 OPTION = -L ./mlx
 OBJ = $(SRC:.c=.o)
 

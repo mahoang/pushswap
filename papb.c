@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   papb.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 16:00:42 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/17 23:36:40 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/18 00:01:00 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ void	push(t_stack *stacka, t_stack *stackb)
 	if (push != stacka)
 	{
 		stacka->nxt = topb;
-		topa->prv = stacka;
 		stackb->nxt = push;
-		topb->prv = push;
-		push->prv = stackb;
 		push->nxt = topb;
 	}
 	stacka->val--;
