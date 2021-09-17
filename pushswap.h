@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:51 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/10 13:56:28 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/10 18:16:44 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ typedef struct s_stack
 
 int	ft_strlen(char *str);
 int fill_lst(t_stack *stack, int ac, char **av);
+void	push(t_stack *stacka, t_stack *stackb);
+void	swap(t_stack *stack);
 
 #endif

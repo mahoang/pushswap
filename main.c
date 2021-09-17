@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:33 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/10 17:02:55 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/10 18:22:01 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,13 @@ int	main(int ac, char *av[])
 	t_stack *stack;
 
 	stack = init_list();
+
 	if (stack && fill_lst(stack, ac - 1, av + 1))
 	{
 		if (is_sort(stack) == 0)
 		{
+			swap(stack);
+			printf("\ntest\n");
 			return (0);
 			//do smthg begin work
 		}

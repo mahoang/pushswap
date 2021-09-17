@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:37:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/10 17:10:42 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/11 11:40:03 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,11 @@ t_stack	*new_list(t_stack *stack, int i)
 		stack->prv->nxt = n_list;
 		stack->prv = n_list;
 	}
+	//printf("\nstackval %i\n", stack->val);
+	//printf("\nnewval %i\n", n_list->val);
+
 	stack->val++;
+	//printf("\nstackval %p\n", &stack->val);
 	return (n_list);
 }
 
@@ -84,7 +88,9 @@ int fill_lst(t_stack *stack, int ac, char **av)
 			|| !is_num(av[i]))
 			return (0);
 		i++;
-		printf("%d\n", new->val);
+		printf("%p\n", &new->val);
+		printf("%i\n", new->val);
+
 	}
 	return (1);
 }
