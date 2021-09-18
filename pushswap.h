@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:51 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/18 13:38:55 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/18 14:39:09 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct s_first
 
 int	ft_strlen(char *str);
 int fill_lst(t_first *stack, int ac, char **av);
-void	push(t_stack *stacka, t_stack *stackb);
-void	swap(t_stack *stack);
+void	push(t_first *from, t_first *to);
+void	swap(t_first *stack);
 void	check_list(t_first *stack);
 void	erase_first(t_first *stack);
 

@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:33 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/18 13:52:57 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/18 14:51:04 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,37 +68,46 @@ int	is_sort(t_first *lst)
 	t_stack *sort;
 
 
-	sort = lst->first->nxt;
+	sort = lst->first;
 	//printf("list val %i\n", lst->val);
-	//printf("sort val %i\n", sort->val);
+	printf("sort val %i\n", sort->val);
 	//printf("sort nxt val %i\n", sort->nxt->val);
 
-	while (sort != NULL && sort->val < sort->nxt->val)
+	while (sort->nxt->val != 0 && sort->val < sort->nxt->val)
 	{
-		printf("aqacccccc%i\n", sort->val);
+		printf("compare sort->val %i et nxt %i\n", sort->val, sort->nxt->val);
 		sort = sort->nxt;
 	}
-	if (sort == NULL)
-		return (1);
-	return (0);
+	if (sort->nxt->val == 0)
+		return (0);
+	return (1);
 }
 int	main(int ac, char *av[])
 {
 	t_first *stack;
+	t_first *b;
 
 	stack = init_list();
 	if (stack && fill_lst(stack, ac - 1, av + 1))
 	{
 		check_list(stack);
-		printf("test\n");
-		if (is_sort(stack) == 0)
+		//printf("test\n");
+		if (is_sort(stack))
 		{
-			erase_first(stack);
-			printf("\ntest check & erase\n");
+			b = init_list();
+
+			push(stack, b);
+			check_list(b);
 			check_list(stack);
+
+			//swap(stack);
+
 			return (0);
 			//do smthg begin work
 		}
+		else
+			printf("a stack in order\n");
+
 	}
 	else if (ac != 1)
 	{
