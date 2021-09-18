@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:33 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/18 14:51:04 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/18 15:58:11 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	is_sort(t_first *lst)
 
 	sort = lst->first;
 	//printf("list val %i\n", lst->val);
-	printf("sort val %i\n", sort->val);
+	//printf("sort val %i\n", sort->val);
 	//printf("sort nxt val %i\n", sort->nxt->val);
 
 	while (sort->nxt->val != 0 && sort->val < sort->nxt->val)
@@ -91,17 +91,20 @@ int	main(int ac, char *av[])
 	if (stack && fill_lst(stack, ac - 1, av + 1))
 	{
 		check_list(stack);
+		printf("len %i\n",count_chain(stack));
 		//printf("test\n");
 		if (is_sort(stack))
 		{
 			b = init_list();
 
-			push(stack, b);
-			check_list(b);
+			//push(stack, b);
+			//check_list(b);
+			del_last(stack, count_chain(stack));
 			check_list(stack);
 
 			//swap(stack);
-
+			free_list(stack);
+			free_list(b);
 			return (0);
 			//do smthg begin work
 		}

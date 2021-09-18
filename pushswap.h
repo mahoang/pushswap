@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:51 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/18 14:39:09 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/18 15:39:11 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ int fill_lst(t_first *stack, int ac, char **av);
 void	push(t_first *from, t_first *to);
 void	swap(t_first *stack);
 void	check_list(t_first *stack);
-void	erase_first(t_first *stack);
+void	del_first(t_first *stack);
+void	del_last(t_first *stack, int len);
+int		count_chain(t_first *stack);
+
 
 #endif

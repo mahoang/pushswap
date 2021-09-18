@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 16:00:42 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/18 14:50:53 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/18 15:57:03 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	push(t_first *from, t_first *to)
 		tmp->nxt = to->first->nxt;
 		to->first = tmp;
 		//printf("1\n");
-		
+
 		//remove previous top of from
-		erase_first(from);
+		del_first(from);
 	}
 }
 
@@ -46,5 +46,24 @@ void	swap(t_first *stack)
 	a = stack->first->val;
 	stack->first->val = stack->first->nxt->val;
 	stack->first->nxt->val = a;
+}/*
+
+void	rotate(t_first *stack)
+{
+	t_stack *tmp;
+	t_stack *last;
+	t_stack *first;
+
+	first = stack->first;
+	last = stack->first;
+	tmp = stack->first;
+	while (last->nxt != NULL)
+		last = tmp->nxt;
+	tmp = last;
+	tmp->nxt =
+
+
+
 
 }
+*/
