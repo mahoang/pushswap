@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:33 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/18 00:58:50 by mahoang          ###   ########.fr       */
+/*   Updated: 2021/09/18 13:52:57 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,40 +29,50 @@
 **rra : reverse rotate a - shift down all elements of stack a by 1. The last element
 **becomes the first one.
 */
-t_stack	*init_list(void)
+t_first	*init_list(void)
 {
 	t_stack *empstack;
+	t_first *first;
 
 	empstack = malloc(sizeof(t_stack));
-	if (empstack)
+	first = malloc(sizeof(t_first));
+	if (empstack && first)
 	{
 		empstack->val = 0;
 		empstack->nxt = NULL;
+		first->first = empstack;
+
 	}
-	return (empstack);
+	return (first);
 }
 
-void	free_list(t_stack *lst)
+void	free_list(t_first *lst)
 {
 	t_stack *tmp;
 
-	while (lst != NULL)
+	if (lst == NULL)
+		exit(EXIT_FAILURE);
+	tmp = lst->first;
+	while (tmp != NULL)
 	{
-		tmp = lst->nxt;
-		//free (lst);
-		lst = tmp;
+		tmp = lst->first->nxt;
+		free (lst->first);
+		lst->first = tmp;
+
 	}
-	//free (lst);
+	free (lst);
 }
 
-int	is_sort(t_stack *lst)
+int	is_sort(t_first *lst)
 {
 	t_stack *sort;
 
 
-	sort = lst->nxt;
-	printf("list val %i\n", lst->val);
-	printf("sort val %i\n", sort->val);
+	sort = lst->first->nxt;
+	//printf("list val %i\n", lst->val);
+	//printf("sort val %i\n", sort->val);
+	//printf("sort nxt val %i\n", sort->nxt->val);
+
 	while (sort != NULL && sort->val < sort->nxt->val)
 	{
 		printf("aqacccccc%i\n", sort->val);
@@ -74,16 +84,17 @@ int	is_sort(t_stack *lst)
 }
 int	main(int ac, char *av[])
 {
-	t_stack *stack;
+	t_first *stack;
 
 	stack = init_list();
 	if (stack && fill_lst(stack, ac - 1, av + 1))
 	{
-		if (is_sort(stack) == 1)
+		check_list(stack);
+		printf("test\n");
+		if (is_sort(stack) == 0)
 		{
-			check_list(stack);
 			erase_first(stack);
-			printf("\ntest\n");
+			printf("\ntest check & erase\n");
 			check_list(stack);
 			return (0);
 			//do smthg begin work
@@ -92,7 +103,7 @@ int	main(int ac, char *av[])
 	else if (ac != 1)
 	{
 		write (1, "Error\n", 7);
-		//free_list (stack);
+		free_list (stack);
 		return (-1);
 	}
 	printf("bla\n");

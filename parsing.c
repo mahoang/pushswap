@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:37:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/11 11:40:03 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/18 13:51:54 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	is_num(char *str)
 	return (1);
 }
 
-t_stack	*new_list(t_stack *stack, int i)
+t_stack	*new_list(t_first *stack, int i)
 {
 	t_stack	*n_list;
 
@@ -60,20 +60,18 @@ t_stack	*new_list(t_stack *stack, int i)
 	if (n_list)
 	{
 		n_list->val = i;
-		n_list->prv = stack->prv;
-		n_list->nxt = stack;
-		stack->prv->nxt = n_list;
-		stack->prv = n_list;
+		n_list->nxt = stack->first;
+		stack->first = n_list;
 	}
 	//printf("\nstackval %i\n", stack->val);
 	//printf("\nnewval %i\n", n_list->val);
 
-	stack->val++;
+	//stack->val++;
 	//printf("\nstackval %p\n", &stack->val);
 	return (n_list);
 }
 
-int fill_lst(t_stack *stack, int ac, char **av)
+int fill_lst(t_first *stack, int ac, char **av)
 {
 	t_stack	*new;
 	int		i;
@@ -88,8 +86,8 @@ int fill_lst(t_stack *stack, int ac, char **av)
 			|| !is_num(av[i]))
 			return (0);
 		i++;
-		printf("%p\n", &new->val);
-		printf("%i\n", new->val);
+		//printf("%p\n", &new->val);
+		//printf("%i\n", new->val);
 
 	}
 	return (1);
