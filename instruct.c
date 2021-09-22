@@ -6,64 +6,112 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 16:00:42 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/18 15:57:03 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/22 14:37:16 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-
 /*
-**pa : push a - take the first element at the top of b and put
- it at the top of a. Do
-**nothing if b is empty.
-**pb : push b - take the first element at the top of a and put it at the top of b. Do
-**nothing if a is empty.
+**take top of from and put it on to
+**remove previous top of from
 */
-
 void	push(t_first *from, t_first *to)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	if (to != NULL)
 	{
 		tmp = malloc(sizeof(t_stack));
-		//take top of from and put it on to
 		tmp->val = from->first->val;
 		tmp->nxt = to->first->nxt;
 		to->first = tmp;
-		//printf("1\n");
-
-		//remove previous top of from
 		del_first(from);
 	}
 }
 
 void	swap(t_first *stack)
 {
-	int a;
+	int	a;
 
 	a = stack->first->val;
 	stack->first->val = stack->first->nxt->val;
 	stack->first->nxt->val = a;
-}/*
-
-void	rotate(t_first *stack)
-{
-	t_stack *tmp;
-	t_stack *last;
-	t_stack *first;
-
-	first = stack->first;
-	last = stack->first;
-	tmp = stack->first;
-	while (last->nxt != NULL)
-		last = tmp->nxt;
-	tmp = last;
-	tmp->nxt =
-
-
-
-
 }
-*/
+
+void	rotate(t_first *stack, int len)
+{
+	t_stack	*tmp;
+	t_stack	*list;
+	int		*rotate;
+	int		i;
+
+	i = 0;
+	rotate = malloc(sizeof(int) * len);
+	list = stack->first;
+	tmp = stack->first;
+	while (i < len)
+	{
+		rotate[i] = tmp->val;
+		i++;
+		tmp = tmp->nxt;
+	}
+	i = 1;
+	while (i < len)
+	{
+		list->val = rotate[i];
+		i++;
+		list = list->nxt;
+	}
+	list->val = rotate[0];
+	free(rotate);
+}
+
+void	r_rotate(t_first *stack, int len)
+{
+	t_stack	*tmp;
+	t_stack	*list;
+	int		*rr;
+	int		i;
+
+	i = 0;
+	rr = malloc(sizeof(int) * len);
+	list = stack->first;
+	tmp = stack->first;
+	while (i < len)
+	{
+		rr[i] = tmp->val;
+		i++;
+		tmp = tmp->nxt;
+	}
+	list->val = rr[len - 1];
+	list = list->nxt;
+	i = 0;
+	while (i < len - 1)
+	{
+		list->val = rr[i];
+		i++;
+		list = list->nxt;
+	}
+	free(rr);
+}
+
+void	do_instr(int ope, t_first *astack, t_first *bstack, t_first *instr)
+{
+	if (ope = SA || ope == SS)
+		swap(astack);
+	if (ope = SB || ope == SS)
+		swap(bstack);
+	if (ope = PA)
+		push(bstack, astack);
+	if (ope = PB)
+		push(astack, bstack);
+	if (ope = RA || ope == RR)
+		rotate(astack, count_chain(astack));
+	if (ope = RB || ope == RR)
+		rotate(bstack, count_chain(bstack));
+	if (ope = RRA || ope == RRR)
+		r_rotate(astack, count_chain(astack));
+	if (ope = RRB || ope == RRR)
+		r_rotate(astack, count_chain(bstack));
+}

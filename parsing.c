@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:37:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/18 13:51:54 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/22 13:47:39 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 long	get_nb(char *str)
 {
-	long l;
-	int i;
-	int s;
+	long	l;
+	int		i;
+	int		s;
 
 	l = 0;
 	i = 0;
@@ -35,14 +35,13 @@ long	get_nb(char *str)
 
 int	is_num(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
 		return (0);
 	if (str[i] == '-')
 		str++;
-//	printf("\nstr %s\n", str);
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
@@ -63,15 +62,10 @@ t_stack	*new_list(t_first *stack, int i)
 		n_list->nxt = stack->first;
 		stack->first = n_list;
 	}
-	//printf("\nstackval %i\n", stack->val);
-	//printf("\nnewval %i\n", n_list->val);
-
-	//stack->val++;
-	//printf("\nstackval %p\n", &stack->val);
 	return (n_list);
 }
 
-int fill_lst(t_first *stack, int ac, char **av)
+int	fill_lst(t_first *stack, int ac, char **av)
 {
 	t_stack	*new;
 	int		i;
@@ -79,16 +73,13 @@ int fill_lst(t_first *stack, int ac, char **av)
 	if (ac == 0)
 		return (0);
 	i = 0;
-	while ( i < ac)
+	while (i < ac)
 	{
 		new = new_list(stack, get_nb(av[i]));
 		if (!new || get_nb(av[i]) == 2147483647
 			|| !is_num(av[i]))
 			return (0);
 		i++;
-		//printf("%p\n", &new->val);
-		//printf("%i\n", new->val);
-
 	}
 	return (1);
 }
