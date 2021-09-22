@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 16:00:42 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/22 14:37:16 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/22 14:57:19 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,22 +96,22 @@ void	r_rotate(t_first *stack, int len)
 	free(rr);
 }
 
-void	do_instr(int ope, t_first *astack, t_first *bstack, t_first *instr)
+void	do_instr(int ope, t_first *astack, t_first *bstack)
 {
-	if (ope = SA || ope == SS)
+	if ((ope == SA) || (ope == SS))
 		swap(astack);
-	if (ope = SB || ope == SS)
+	if ((ope == SB) || (ope == SS))
 		swap(bstack);
-	if (ope = PA)
+	if (ope == PA)
 		push(bstack, astack);
-	if (ope = PB)
+	if (ope == PB)
 		push(astack, bstack);
-	if (ope = RA || ope == RR)
+	if ((ope == RA) || (ope == RR))
 		rotate(astack, count_chain(astack));
-	if (ope = RB || ope == RR)
+	if ((ope == RB) || (ope == RR))
 		rotate(bstack, count_chain(bstack));
-	if (ope = RRA || ope == RRR)
+	if ((ope == RRA) || (ope == RRR))
 		r_rotate(astack, count_chain(astack));
-	if (ope = RRB || ope == RRR)
+	if ((ope == RRB) || (ope == RRR))
 		r_rotate(astack, count_chain(bstack));
 }

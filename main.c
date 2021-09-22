@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:33 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/22 13:50:09 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/22 14:57:44 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int ac, char *av[])
 	{
 		check_list(stack);
 		printf("len %i\n",count_chain(stack));
-		if (is_sort(stack))
+		if (is_sort(stack) && !have_duplicates(stack, count_chain(stack)))
 		{
 			b = init_list();
 
@@ -90,7 +90,7 @@ int	main(int ac, char *av[])
 			//do smthg begin work
 		}
 		else
-			printf("a stack in order\n");
+			printf("a stack in order or have dup\n");
 	}
 	else if (ac != 1)
 	{

@@ -6,13 +6,13 @@
 #    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/10 13:13:50 by zephyrus          #+#    #+#              #
-#    Updated: 2021/09/18 14:40:48 by zephyrus         ###   ########.fr        #
+#    Updated: 2021/09/22 14:54:22 by zephyrus         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 HEADER = pushswap.h
-SRC = main.c parsing.c instruct.c utils.c
+SRC = main.c parsing.c instruct.c utils.c utils2.c
 OPTION = -L ./mlx
 OBJ = $(SRC:.c=.o)
 

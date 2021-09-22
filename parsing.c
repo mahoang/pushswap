@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:37:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/22 13:47:39 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/22 14:45:33 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ long	get_nb(char *str)
 	}
 	while (str[i])
 		l = l * 10 + str[i++] - '0';
-	if (l > INT_MAX || l > INT_MAX)
+	if (l > INT_MAX || l < INT_MIN)
 		return (2147483647);
 	return (l * s);
 }

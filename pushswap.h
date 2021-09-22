@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:51 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/22 13:57:15 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/22 14:54:34 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void	check_list(t_first *stack);
 void	del_first(t_first *stack);
 void	del_last(t_first *stack, int len);
 int		count_chain(t_first *stack);
+int	have_duplicates(t_first *stack, int len);
 
 #endif
