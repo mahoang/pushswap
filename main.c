@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:33 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/22 14:57:44 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/10/06 03:54:33 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,48 +44,24 @@ void	free_list(t_first *lst)
 	free (lst);
 }
 
-int	is_sort(t_first *lst)
-{
-	t_stack	*sort;
-
-	sort = lst->first;
-	while (sort->nxt->val != 0 && sort->val < sort->nxt->val)
-	{
-		printf("compare sort->val %i et nxt %i\n", sort->val, sort->nxt->val);
-		sort = sort->nxt;
-	}
-	if (sort->nxt->val == 0)
-		return (0);
-	return (1);
-}
-
 int	main(int ac, char *av[])
 {
 	t_first	*stack;
-	t_first	*b;
 
 	stack = init_list();
 	if (stack && fill_lst(stack, ac - 1, av + 1))
 	{
-		check_list(stack);
+		del_last(stack, count_chain(stack));
+		algo_temp(stack);
+		return(0);
+		//check_list(stack);
 		printf("len %i\n",count_chain(stack));
-		if (is_sort(stack) && !have_duplicates(stack, count_chain(stack)))
+		if (is_sort(stack) && !have_duplicates(stack, count_chain(stack), 0, 0))
 		{
-			b = init_list();
-
-			//push(stack, b);
-			//check_list(b);
-			del_last(stack, count_chain(stack));
-			check_list(stack);
-
-			rotate(stack, count_chain(stack));
-			check_list(stack);
-			r_rotate(stack, count_chain(stack));
-			check_list(stack);
+			do_algo(stack);
 
 			//swap(stack);
 			free_list(stack);
-			free_list(b);
 			return (0);
 			//do smthg begin work
 		}
@@ -98,7 +74,7 @@ int	main(int ac, char *av[])
 		free_list (stack);
 		return (-1);
 	}
-	printf("bla\n");
+	printf("end\n");
 	free_list(stack);
 	return (0);
 }

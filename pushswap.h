@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:51 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/22 14:54:34 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/10/06 03:29:18 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ typedef struct s_first
 }				t_first;
 
 int		ft_strlen(char *str);
+void	free_list(t_first *lst);
+int		is_sort(t_first *lst);
+t_first	*init_list(void);
 int		fill_lst(t_first *stack, int ac, char **av);
 void	push(t_first *from, t_first *to);
 void	swap(t_first *stack);
@@ -51,6 +54,11 @@ void	check_list(t_first *stack);
 void	del_first(t_first *stack);
 void	del_last(t_first *stack, int len);
 int		count_chain(t_first *stack);
-int	have_duplicates(t_first *stack, int len);
+int		have_duplicates(t_first *stack, int len, int i, int j);
+int		list_max(t_first *stack);
+int		list_min(t_first *stack);
+t_first	do_algo(t_first *a);
+t_stack	algo_temp(t_first *stack);
+
 
 #endif
