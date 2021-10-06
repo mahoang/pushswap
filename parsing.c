@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 13:37:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/22 14:45:33 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/10/06 05:16:33 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ int	fill_lst(t_first *stack, int ac, char **av)
 			return (0);
 		i++;
 	}
+	del_last(stack, count_chain(stack));
 	return (1);
 }

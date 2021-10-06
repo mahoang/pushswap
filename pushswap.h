@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 15:17:51 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/10/06 03:29:18 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/10/06 06:18:05 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int		have_duplicates(t_first *stack, int len, int i, int j);
 int		list_max(t_first *stack);
 int		list_min(t_first *stack);
 t_first	do_algo(t_first *a);
-t_stack	algo_temp(t_first *stack);
+t_first	algo_false(t_first *stack);
+int	get_median(t_first	*f_list, int len);
+int	get_decile(t_first *f_list, int len, int decile);
+
 
 
 #endif

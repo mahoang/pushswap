@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 00:14:19 by mahoang           #+#    #+#             */
-/*   Updated: 2021/10/06 04:13:46 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/10/06 04:15:52 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,10 @@ int	is_sort(t_first *lst)
 	{
 		//printf("compare prec %i et suivant %i\n", sort->val, sort->nxt->val);
 		sort = sort->nxt;
-		printf("2\n");
 	}
 	if (sort->nxt == NULL)
 	{
-		printf("3\n");
-
 		return (1);
 	}
-		printf("4\n");
-
 	return (0);
 }
